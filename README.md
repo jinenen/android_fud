@@ -49,9 +49,9 @@ The system adopts a multi-dimensional defense architecture combining **Native C+
 * **4-Byte ZipAlign Optimization**: Enforces strict 4-byte (32-bit) alignment for native shared libraries and uncompressed resources, ensuring fast memory mapping and minimal RAM consumption on physical devices.
 
 ### 2.7 Ultra-Aggressive Anti-Reverse-Engineering Countermeasure Traps
-- **Win32 Reserved Device Name Trap:** Injects `aux.dat`, `con.dat`, `prn.dat`, and `nul.dat` to trigger system-level write failures (`ERROR_INVALID_NAME`) when reverse engineers attempt to extract files on Windows using tools such as Apktool, WinRAR, and 7-Zip.
-- **Malformed Decoy DEX Trap:** Forges DEX headers while injecting massive out-of-bounds pointers, causing static analysis tools such as JADX and Ghidra to encounter out-of-memory (OOM) errors or unexpected crashes during parsing.
-- **Excessively Long Filenames and Deeply Nested Directories:** Exceeds Windows' 260-character `MAX_PATH` limitation and creates thousands of nested directory levels, potentially causing stack overflows in recursive decompilation tools.
+* **Win32 Reserved Device Name Trap:** Injects `aux.dat`, `con.dat`, `prn.dat`, and `nul.dat` to trigger system-level write failures (`ERROR_INVALID_NAME`) when reverse engineers attempt to extract files on Windows using tools such as Apktool, WinRAR, and 7-Zip.
+* **Malformed Decoy DEX Trap:** Forges DEX headers while injecting massive out-of-bounds pointers, causing static analysis tools such as JADX and Ghidra to encounter out-of-memory (OOM) errors or unexpected crashes during parsing.
+* **Excessively Long Filenames and Deeply Nested Directories:** Exceeds Windows' 260-character `MAX_PATH` limitation and creates thousands of nested directory levels, potentially causing stack overflows in recursive decompilation tools.
 
 ---
 
