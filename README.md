@@ -26,7 +26,7 @@ The system adopts a multi-dimensional defense architecture combining **Native C+
 * **Native In-Memory Loading Engine**: The proprietary `libtjsec.so` core intercepts the cold-start sequence, decrypting and loading bytecode directly in native memory, completely avoiding any plaintext file drops on disk.
 * **Universal Hidden API Exemption Bypass**: Overcomes Android 12+ / 13+ / 14's strict restrictions on Java reflection (`access denied`) by directly triggering Native-level runtime exemptions in C++, restoring unrestricted runtime reflection capabilities for dynamic component mounting.
 
-### 2.2 AndroidManifest Sanitization & Component Cloaking (Scheme 1)
+### 2.2 AndroidManifest Sanitization & Component Cloaking
 * **Complete Outer Component Stripping**: Reconstructs binary AXML to strip all business Activities, Services, BroadcastReceivers, and ContentProviders from the outer manifest. Decompilers (such as Jadx and Apktool) only observe a bare shell entry point.
 * **Dynamic Component Lifecycle Proxying**: Utilizes a custom `CoreComponentFactory` and dynamic `StubInstrumentation` proxy to seamlessly intercept and mount genuine business components at runtime without compromising activity transitions or theme styles.
 * **Notification & Foreground Service Guard**: Features an automatic fallback mechanism for Android 13/14 foreground services, ensuring that missing notification icons or RemoteViews are safely substituted, completely preventing SystemUI cross-process termination.
@@ -47,6 +47,11 @@ The system adopts a multi-dimensional defense architecture combining **Native C+
 ### 2.6 ZIP Alignment & Multi-Channel Normalized Signing
 * **Full V1/V2 Signing Support**: Integrates standard Android signing schemes to meet signature verification standards on Android 7.0 through 14.
 * **4-Byte ZipAlign Optimization**: Enforces strict 4-byte (32-bit) alignment for native shared libraries and uncompressed resources, ensuring fast memory mapping and minimal RAM consumption on physical devices.
+
+### 2.7 Ultra-Aggressive Anti-Reverse-Engineering Countermeasure Traps
+- **Win32 Reserved Device Name Trap:** Injects `aux.dat`, `con.dat`, `prn.dat`, and `nul.dat` to trigger system-level write failures (`ERROR_INVALID_NAME`) when reverse engineers attempt to extract files on Windows using tools such as Apktool, WinRAR, and 7-Zip.
+- **Malformed Decoy DEX Trap:** Forges DEX headers while injecting massive out-of-bounds pointers, causing static analysis tools such as JADX and Ghidra to encounter out-of-memory (OOM) errors or unexpected crashes during parsing.
+- **Excessively Long Filenames and Deeply Nested Directories:** Exceeds Windows' 260-character `MAX_PATH` limitation and creates thousands of nested directory levels, potentially causing stack overflows in recursive decompilation tools.
 
 ---
 
