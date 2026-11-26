@@ -5,6 +5,9 @@
 
 [Click to contact us](http://47.108.138.179:8006/?session=0b54fbc324904420)
 
+Gmail: tian876551724@gmail.com
+Other: 876551724@qq.com
+
 ## We can generate a trial version of your app as an Android APK!
 
 
@@ -52,6 +55,9 @@ The system adopts a multi-dimensional defense architecture combining **Native C+
 * **Win32 Reserved Device Name Trap:** Injects `aux.dat`, `con.dat`, `prn.dat`, and `nul.dat` to trigger system-level write failures (`ERROR_INVALID_NAME`) when reverse engineers attempt to extract files on Windows using tools such as Apktool, WinRAR, and 7-Zip.
 * **Malformed Decoy DEX Trap:** Forges DEX headers while injecting massive out-of-bounds pointers, causing static analysis tools such as JADX and Ghidra to encounter out-of-memory (OOM) errors or unexpected crashes during parsing.
 * **Excessively Long Filenames and Deeply Nested Directories:** Exceeds Windows' 260-character `MAX_PATH` limitation and creates thousands of nested directory levels, potentially causing stack overflows in recursive decompilation tools.
+
+![Pic1](1.png)
+![Pic1](2.png)
 
 ---
 
